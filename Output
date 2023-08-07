@@ -1,0 +1,56 @@
+# Output:
+# ========
+
+# POST /your-webhook-callback-endpoint/:http://localhost:8000/api/webhook/
+# Authorization: Token YOUR_TOKEN_HERE:Token 4795694dc8be315cb6cac84a6867f2d33dcfb028
+# Content-Type: application/json
+
+# {
+#     "submission_id": 123,
+#     "test_result": "passed",
+#     "timestamp": "2023-08-04T12:34:56"
+# }
+
+
+# Run the following command to create the necessary token table
+# ==============================================================
+# python manage.py migrate
+
+# create a user
+# ==============
+
+# from django.contrib.auth.models import User
+# user = User.objects.create_user(username='test', password='test1234')
+
+# create an authentication token for this user
+# ==============================================
+
+# from rest_framework.authtoken.models import Token
+# token, created = Token.objects.get_or_create(user=user)
+
+
+# The token.key attribute contains the generated token value
+# ==============================================================
+
+# print(token.key)  
+
+# Open Postman and create a new request or open an existing one.
+
+# Click on the "Headers" tab below the request URL field.
+
+# In the "Headers" tab, add a new header by clicking on the "Add" button.
+
+# In the "Key" field, enter "Authorization".
+
+# In the "Value" field, enter the token value preceded by the word "Token" and a space. The header should look like this:
+
+# Key: Authorization
+# Value: Token YOUR_TOKEN_VALUE
+# Replace YOUR_TOKEN_VALUE with the actual token value you obtained.
+
+# After setting the Authorization header, you can proceed with adding any other required headers and the request body.
+
+# Send the request by clicking on the "Send" button.
+
+# By following these steps, Postman will include the Authorization header with the token value in your requests, and you should be able to access your API endpoint that requires authentication.
+
